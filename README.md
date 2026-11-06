@@ -1,60 +1,15 @@
-# Karma Free — Generador de documentos de demostración
+# Karma Free V2 - Bot automatico de demostracion
 
-Proyecto inicial con:
-- Página web Flask para generar un PDF ficticio.
-- Bot de Telegram para generar el mismo PDF mediante un mensaje con campos.
-- Marca de agua y avisos permanentes: **MUESTRA — SIN VALIDEZ MÉDICA**.
+Esta version usa botones y preguntas paso a paso; ya no requiere separar datos con `|`.
+Genera un PDF ficticio con marca permanente MUESTRA - SIN VALIDEZ MEDICA.
+No genera incapacidades reales ni soportes laborales, ni imita EPS/IPS, firmas, sellos o codigos oficiales.
 
-## Límites de uso
-Esta aplicación no genera incapacidades médicas auténticas. No incluye logos de EPS/IPS, firmas, sellos, códigos de validación ni datos de profesionales. Usa únicamente datos ficticios y no presentes sus resultados como soportes laborales.
+## Actualizar Railway
+1. Reemplaza `bot.py`, `app.py` y `requirements.txt` en la raiz del repositorio GitHub.
+2. Haz Commit changes.
+3. En Railway confirma Start Command: `python bot.py`.
+4. Conserva la variable `TELEGRAM_BOT_TOKEN` (no la publiques).
+5. Espera el nuevo deploy. En logs debe aparecer: `Karma Free demo bot iniciado; esperando mensajes.`
+6. En Telegram envia `/start`, pulsa `Crear documento de demostracion` y sigue las preguntas.
 
-## Requisitos
-- Python 3.10 o superior
-- Una cuenta de Telegram y un bot creado con BotFather (solo si usarás el bot)
-
-## Instalación
-```bash
-python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# Linux/macOS:
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-## Ejecutar la página web
-```bash
-python app.py
-```
-Abre `http://127.0.0.1:5000`.
-
-## Ejecutar el bot de Telegram
-1. Crea un bot con `@BotFather` y copia su token.
-2. Configura la variable de entorno `TELEGRAM_BOT_TOKEN`.
-3. Ejecuta:
-```bash
-python bot.py
-```
-
-En Windows PowerShell:
-```powershell
-$env:TELEGRAM_BOT_TOKEN="TU_TOKEN"
-python bot.py
-```
-
-En Linux/macOS:
-```bash
-export TELEGRAM_BOT_TOKEN="TU_TOKEN"
-python bot.py
-```
-
-## Formato para Telegram
-Envía seis campos separados por `|`:
-`Nombre ficticio | ID ficticia | Fecha inicio | Fecha fin | Días | Motivo ficticio`
-
-Ejemplo:
-`Alex Demo | 000000 | 2026-11-06 | 2026-11-07 | 2 | Ejemplo de reposo`
-
-## Publicación
-Para publicar la web, usa un hosting compatible con Python/Flask y configura `FLASK_SECRET`.
-No publiques el token del bot ni lo subas a GitHub. Añade autenticación y límites de uso antes de abrir el servicio al público.
+No ejecutes el mismo token en dos servicios simultaneamente: puede causar conflicto de polling.
