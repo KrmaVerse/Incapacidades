@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Karma Free | Generador de muestras</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="orb">K</div>
+      <div><p class="eyebrow">KARMA FREE</p><h1>Generador de documentos demo</h1></div>
+    </header>
+    <section class="warning">
+      <strong>MUESTRA — SIN VALIDEZ MÉDICA</strong>
+      <p>Esta herramienta crea únicamente documentos ficticios para pruebas y demostraciones. No genera incapacidades médicas ni soportes laborales auténticos.</p>
+    </section>
+    {% with messages = get_flashed_messages() %}{% if messages %}
+      <p class="flash">{{ messages[0] }}</p>
+    {% endif %}{% endwith %}
+    <form method="post">
+      <label>Nombre ficticio<input name="name" maxlength="80" placeholder="Ej. Alex Demo" required></label>
+      <label>Identificación ficticia<input name="document" maxlength="40" placeholder="Ej. 000000"></label>
+      <div class="two">
+        <label>Fecha de inicio<input type="date" name="start" required></label>
+        <label>Fecha de finalización<input type="date" name="end" required></label>
+      </div>
+      <div class="two">
+        <label>Días (ejemplo)<input name="days" maxlength="10" placeholder="2"></label>
+        <label>Motivo ficticio<input name="reason" maxlength="120" placeholder="Ejemplo de reposo"></label>
+      </div>
+      <button type="submit">Generar PDF de muestra</button>
+    </form>
+    <footer>© Karma Free · Uso demostrativo · No sustituye una valoración médica</footer>
+  </main>
+</body>
+</html>
